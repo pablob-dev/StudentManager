@@ -4,6 +4,9 @@ public class GradeManager {
 
     ArrayList<Student>  students;
 
+    public GradeManager(){
+        students = new ArrayList<>();
+    }
 
     //add student
     public void addStudent(Student student){

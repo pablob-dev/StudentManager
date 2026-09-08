@@ -40,5 +40,10 @@ public class Student {
         System.out.println("Name: "+name+"\nID: "+id+"\nGrades: "+grades);
     }
 
+    @Override
+    public String toString() {
+        return "Student Name=" + name + ", id=" + id + ", grades=" + grades + "";
+    }
+
 
 }
