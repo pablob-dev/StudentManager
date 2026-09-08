@@ -3,20 +3,23 @@ import java.util.ArrayList;
 public class Student {
 
     final String name;
-    final String id;
-    ArrayList<Double> grades;
+    final int id;
+    ArrayList<Double> grades = new ArrayList<>();
 
-    public Student(String name, String id, ArrayList<Double> grades) {
+    public Student(String name, int id, double[] grades) {
         this.name=name;
         this.id=id;
-        this.grades=grades;
+        for(double grade : grades){
+            this.grades.add(grade);
+        }
+
     }
 
     public String getName() {
         return name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
