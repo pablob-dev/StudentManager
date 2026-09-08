@@ -43,7 +43,7 @@ public class Main {
         }
 
 
-        //second state 
+        //second state
         loop2:
         while(true){
             System.out.println("What would you like to do?");
