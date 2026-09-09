@@ -25,7 +25,7 @@ public class Main {
             System.out.println("What would you like to do?");
             System.out.println("1:load default file");
             System.out.println("2:load another file");
-            System.out.println("3:exit program");
+            System.out.println("3:open file editing");
             try{
                 switch(scanner.nextInt()){
                     case 1:
@@ -34,22 +34,24 @@ public class Main {
                         System.out.println("Loading file...");
                         break;
                     case 2:
-                        scanner.nextLine();
-                        fileName = scanner.nextLine();
-                        Path filePath = Paths.get(fileName+".txt");
-
                         try {
                             // Read the entire file content into a String
+                            scanner.nextLine();
+                            fileName = scanner.nextLine();
+                            Path filePath = Paths.get(fileName+".txt");
                             fileToArray(filePath);
-                            System.out.println("An error occurred while reading the file.");
+
                         } catch (Exception e) {
-                            System.out.println("An error occurred while reading the file.");
-                            e.printStackTrace();
+
                         }
-                        seeFile(fileName + ".txt");
                         break;
                     case 3:
+                        if(manager==null){
+                            break;
+                        }
                         break loop;
+                    case 4:
+                        System.exit(0);
                     default:
                         scanner.nextLine();
                         break;
@@ -125,13 +127,12 @@ public class Main {
         try {
             // Read the entire file content into a String
             String content = Files.readString(filePath);
-            System.out.println(content);
+            System.out.println(manager.toString());
         } catch (IOException e) {
             System.out.println("An error occurred while reading the file.");
-            e.printStackTrace();
         }
 
-        System.out.println(manager.toString());
+
 
     }
 
@@ -158,7 +159,7 @@ public class Main {
             writer.write(content.toString());
             writer.close();
         }catch(IOException e){
-            e.printStackTrace();
+
         }
     }
 
@@ -177,12 +178,14 @@ public class Main {
                 manager.addStudent(new Student(line));
             }
 
+            System.out.println("Successfully loaded!.");
+            seeFile(file.getFileName().toString());
+
 
         } catch (IOException e) {
             System.out.println("An error occurred while reading the file.");
-            e.printStackTrace();
-        }
 
+        }
     }
 
 

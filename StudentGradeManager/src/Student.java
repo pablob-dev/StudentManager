@@ -23,8 +23,8 @@ public class Student {
         this.id = Integer.parseInt(line.split(",")[1].split("=")[1].trim());
 
         grades = new ArrayList<>();
-        for(int i=0; i<line.split("=")[5].split(",").length;i++){
-            grades.add(Double.parseDouble(line.split("=")[5].split(",")[i]));
+        for(int i=0; i<line.split("=")[3].split(",").length;i++){
+            grades.add(Double.parseDouble(line.split("=")[3].split(",")[i]));
         }
 
 
