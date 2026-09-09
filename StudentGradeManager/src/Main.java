@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -63,40 +64,64 @@ public class Main {
 
 
         //second state
-        /*
-        String fileName;
+
+        String nameStudent;
+        int idStudent;
+        ArrayList<Double> grades;
+        String fileSaveName;
         loop2:
         while(true){
+            scanner.nextLine();
             System.out.println("What would you like to do?");
             System.out.println("1:add student");
-            System.out.println("2:exit program");
+            System.out.println("2:remove student");
+            System.out.println("3:See students list");
+            System.out.println("4:save program");
+            System.out.println("5:exit program");
             try{
                 switch(scanner.nextInt()){
                     case 1:
                         scanner.nextLine();
-                        fileName = scanner.nextLine();
-                        Path filePath = Paths.get(fileName+".txt");
 
-                        try {
-                            // Read the entire file content into a String
-                            fileToArray(filePath);
-                            System.out.println("An error occurred while reading the file.");
-                        } catch (Exception e) {
-                            System.out.println("An error occurred while reading the file.");
-                            e.printStackTrace();
+                        System.out.println("Student name:");
+                        nameStudent = scanner.nextLine();
+
+                        System.out.println("Student id:");
+                        idStudent = Integer.parseInt(scanner.nextLine());
+
+
+                        grades = new ArrayList<>();
+
+                        System.out.println("Would you like to add a grade?");
+                        while(scanner.nextLine().toLowerCase().equals("yes")){
+                            System.out.print("Enter the grade:");
+                            grades.add(Double.parseDouble(scanner.nextLine()));
+
                         }
+
+                        manager.addStudent(new Student(nameStudent,idStudent,grades));
+
                         break;
-                    case 2:break;
-                    case 3:break;
+                    case 2:
+                        scanner.nextLine();
+                        System.out.println("Write student id:");
+                        idStudent=Integer.parseInt(scanner.nextLine());
+                        manager.removeStudent(idStudent);
+                        break;
+                    case 3: manager.showStudents();break;
                     case 4:
-                        break loop2;
+                        scanner.nextLine();
+                        fileSaveName = scanner.nextLine();
+                        saveFile(fileSaveName);
+                        break;
+                    case 5:break loop2;
                     default:break;
                 }
             }catch(Exception e){
-
+                System.out.println("An error has ocurred");
             }
         }
-        */
+
 
 
 
@@ -127,7 +152,7 @@ public class Main {
         try {
             // Read the entire file content into a String
             String content = Files.readString(filePath);
-            System.out.println(manager.toString());
+            System.out.println(content);
         } catch (IOException e) {
             System.out.println("An error occurred while reading the file.");
         }
@@ -190,12 +215,12 @@ public class Main {
 
 
 
-    /*
-    public static void saveFile(){
+
+    public static void saveFile(String filename){
 
         try {
-             BufferedWriter writer = new BufferedWriter(new FileWriter("\\FilesWriter\\Students.txt"));
-             writer.write(data.toString());
+             BufferedWriter writer = new BufferedWriter(new FileWriter(filename+".txt"));
+             writer.write(manager.toString());
              writer.close();
         }catch(IOException e){
             e.printStackTrace();
@@ -203,7 +228,7 @@ public class Main {
 
     }
 
-     */
+
 
 
 }

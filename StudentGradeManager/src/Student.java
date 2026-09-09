@@ -15,6 +15,13 @@ public class Student {
 
     }
 
+    public Student(String name, int id, ArrayList<Double> grades) {
+        this.name=name;
+        this.id=id;
+        this.grades=grades;
+
+    }
+
 
     public Student(String line){
 
