@@ -15,6 +15,25 @@ public class Student {
 
     }
 
+
+    public Student(String line){
+
+
+        this.name = line.split("=")[1].split(",")[0];
+        this.id = Integer.parseInt(line.split(",")[1].split("=")[1].trim());
+
+        grades = new ArrayList<>();
+        for(int i=0; i<line.split("=")[5].split(",").length;i++){
+            grades.add(Double.parseDouble(line.split("=")[5].split(",")[i]));
+        }
+
+
+
+    }
+
+
+
+
     public String getName() {
         return name;
     }
@@ -42,7 +61,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student Name=" + name + ", id=" + id + ", grades=" + grades + "";
+
+        StringBuilder sb = new StringBuilder();
+
+        for(double grade : grades){
+            sb.append(grade).append(",");
+        }
+
+        return "Student Name=" + name + ",id=" + id + ",grades=" + sb;
     }
 
 

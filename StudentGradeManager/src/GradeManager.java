@@ -8,6 +8,10 @@ public class GradeManager {
         students = new ArrayList<>();
     }
 
+    public GradeManager(ArrayList<Student> students){
+        this.students = students;
+    }
+
     //add student
     public void addStudent(Student student){
         students.add(student);

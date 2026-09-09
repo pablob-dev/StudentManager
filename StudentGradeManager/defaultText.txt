@@ -1,2 +1,2 @@
-Student [name=Guillermo, id=2345, grades=[85.6, 78.2, 55.5]]
-Student [name=Pedro, id=2346, grades=[99.5, 60.2, 44.5]]
+Student Name=Guillermo,id=2345,grades=85.6,78.2,55.5,
+Student Name=Pedro,id=2346,grades=99.5,60.2,44.5,
