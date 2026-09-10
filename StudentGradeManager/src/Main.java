@@ -28,7 +28,7 @@ public class Main {
             System.out.println("2:load another file");
             System.out.println("3:open file editing");
             try{
-                switch(scanner.nextInt()){
+                switch(Integer.parseInt(scanner.nextLine())){
                     case 1:
                         writeDefaultFile();
                         seeFile("defaultText.txt");
@@ -37,7 +37,6 @@ public class Main {
                     case 2:
                         try {
                             // Read the entire file content into a String
-                            scanner.nextLine();
                             fileName = scanner.nextLine();
                             Path filePath = Paths.get(fileName+".txt");
                             fileToArray(filePath);
@@ -54,11 +53,10 @@ public class Main {
                     case 4:
                         System.exit(0);
                     default:
-                        scanner.nextLine();
                         break;
                 }
             }catch(Exception e){
-                scanner.nextLine();
+
             }
         }
 
@@ -71,7 +69,6 @@ public class Main {
         String fileSaveName;
         loop2:
         while(true){
-            scanner.nextLine();
             System.out.println("What would you like to do?");
             System.out.println("1:add student");
             System.out.println("2:remove student");
@@ -79,10 +76,8 @@ public class Main {
             System.out.println("4:save program");
             System.out.println("5:exit program");
             try{
-                switch(scanner.nextInt()){
+                switch(Integer.parseInt(scanner.nextLine())){
                     case 1:
-                        scanner.nextLine();
-
                         System.out.println("Student name:");
                         nameStudent = scanner.nextLine();
 
@@ -96,6 +91,7 @@ public class Main {
                         while(scanner.nextLine().toLowerCase().equals("yes")){
                             System.out.print("Enter the grade:");
                             grades.add(Double.parseDouble(scanner.nextLine()));
+                            System.out.println("Would you like to add another grade?");
 
                         }
 
@@ -103,14 +99,13 @@ public class Main {
 
                         break;
                     case 2:
-                        scanner.nextLine();
                         System.out.println("Write student id:");
                         idStudent=Integer.parseInt(scanner.nextLine());
                         manager.removeStudent(idStudent);
                         break;
                     case 3: manager.showStudents();break;
                     case 4:
-                        scanner.nextLine();
+                        System.out.println("Write name to save the file:");
                         fileSaveName = scanner.nextLine();
                         saveFile(fileSaveName);
                         break;
@@ -222,6 +217,7 @@ public class Main {
              BufferedWriter writer = new BufferedWriter(new FileWriter(filename+".txt"));
              writer.write(manager.toString());
              writer.close();
+             System.out.println("Successfully saved!.");
         }catch(IOException e){
             e.printStackTrace();
         }

@@ -1,0 +1,1 @@
+Student Name=Guillermo,id=2345,grades=85.6,78.2,55.5,
